@@ -5,9 +5,18 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+enum TrailStatus {
+  ACTIVE
+  INACTIVE
 }
 
 model Trail {
@@ -15,7 +24,8 @@ model Trail {
 
   title       String
   description String?
-  slug        String  @unique
+  slug        String      @unique
+  status      TrailStatus @default(ACTIVE)
 
   created_At DateTime @default(now())
   update_At  DateTime @updatedAt
@@ -70,4 +80,7 @@ model Enrollment {
 
   Trail    Trail?  @relation(fields: [trail_id], references: [id])
   trail_id String?
+
+  created_At DateTime @default(now())
+  update_At  DateTime @updatedAt
 }
