@@ -2,10 +2,18 @@ import {PrismaClient} from "@prisma/client";
 
 async function main() {
     const prisma = new PrismaClient()
-    await prisma.student.create({
+
+    
+
+    /*const teste = await prisma.student.findMany({
+       
+    })
+    console.log(teste);*/
+
+    /*await prisma.student.create({
         data: {
-            name: "Otavio",
-            email: "otavioo00@otavio.com",
+            name: "hiyuiti",
+            email: "Riyuiti@gmail.com",
             enrollements: {
                 create: {
                     Trail: {
@@ -16,7 +24,7 @@ async function main() {
                 }
             }
         }
-    })
+    })*/
 }
 
 main()
